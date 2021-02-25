@@ -76,7 +76,10 @@ void VM::setRemainMem() {
 }
 
 bool VM::isEnough(Container c) {
-    if(c.getCoCPU()<= this->remainCPU&&c.getOs()==this->os&&c.getCoMem()<=this->remainMem){
+    if(this->os!=""&&this->os!=c.getOs()){
+        return false;
+    }
+    if(c.getCoCPU()<= this->remainCPU&&c.getCoMem()<=this->remainMem){
         return true;
     }
     return false;
@@ -87,4 +90,5 @@ void VM::addContainer(Container c) {
     this->list.push_back(c);
     setRemainMem();
     setRemainCPU();
+    this->os=c.getOs();
 }

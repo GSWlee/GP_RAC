@@ -88,9 +88,10 @@ std::map<std::string,int> getArg(Container c,VM v){
     value["lvc"]=v.getRemainCPU();
     value["coC"]=c.getCoCPU();
     value["coM"]=c.getCoMem();
-    value["vMO"]=v.getIdleMem();
-    value["vCO"]=v.getRemainCPU();
-};
+    value["vMO"]=v.getOs()==""?v.getIdleMem():0;
+    value["vCO"]=v.getOs()==""?v.getIdleCPU():0;
+    return value;
+}
 
 Rule::Rule(int id) {
     this->id=id;

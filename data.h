@@ -7,7 +7,9 @@
 #include "PM.h"
 #include "Rule.h"
 class data {
+public:
     std::vector<Container> createContainers(std::string os,int,int start=0);
+    std::vector<VM> createTemplateVM();
     PM createPM(int);
     VM createVM(int,int);
 
